@@ -1,1 +1,269 @@
+/* Variables de color - Paleta Rosada, Bonita y Minimalista */
+:root {
+    --color-background: #FDFDFD; /* Blanco muy suave, casi roto */
+    --color-text-primary: #333333; /* Gris oscuro para texto principal */
+    --color-text-secondary: #777777; /* Gris medio para texto secundario */
+    --color-semester-bg: #F8F0F5; /* Rosa muy pálido para fondo de semestre */
+    --color-border: #E8D9E4; /* Rosa pálido para bordes */
+    --color-course-bg: #FFFFFF; /* Blanco puro para fondo de ramo */
+    --color-course-hover-bg: #FEEFF7; /* Rosa claro al pasar el mouse */
+    --color-approved-bg: #D4A6C5; /* Rosa medio apagado para aprobado */
+    --color-approved-text: #FFFFFF; /* Texto blanco para ramos aprobados */
+    --color-blocked-bg: #EAEAEA; /* Gris muy claro para ramos bloqueados (suave) */
+    --color-blocked-text: #AAAAAA; /* Gris claro para texto bloqueado */
+    --color-highlight-stroke: #C08CB2; /* Rosa más oscuro para acentos y tachado */
+    --color-modal-bg: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente para modal (más suave) */
+    --color-modal-content-bg: #FFFFFF; /* Fondo del contenido del modal */
+    --color-modal-text: #333333; /* Color de texto del modal */
+    --color-modal-button-hover: #E8D9E4; /* Rosa pálido para botón de cerrar del modal */
+}
 
+/* Estilos Generales */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--color-highlight-stroke), var(--color-approved-bg)); /* Degradado sutil para el encabezado */
+    color: var(--color-background); /* Texto claro */
+    padding: 2.5rem 1rem; /* Un poco más de padding vertical */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem; /* Un poco más pequeño */
+    margin-bottom: 0.4rem;
+    letter-spacing: 1px; /* Menos espaciado */
+    font-weight: 700;
+}
+
+.header-subtitle {
+    font-size: 1rem; /* Más pequeño */
+    font-weight: 400; /* Un poco más de peso */
+    opacity: 0.95;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 2.5rem; /* Aumento de padding */
+    max-width: 1500px; /* Limita el ancho máximo un poco más */
+    margin: 0 auto;
+}
+
+/* Estilos de la Malla Curricular */
+.malla-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Columnas responsivas, tamaño base más pequeño */
+    gap: 1.8rem; /* Espacio entre columnas/semestres */
+    justify-content: center;
+    align-items: start;
+}
+
+.semester-column {
+    background-color: var(--color-semester-bg);
+    border-radius: 10px; /* Bordes más redondeados */
+    padding: 1.8rem; /* Padding ajustado */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07); /* Sombra más suave */
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem; /* Espacio entre ramos dentro de un semestre, un poco menos */
+}
+
+.semester-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; /* Más pequeño */
+    color: var(--color-text-primary);
+    margin-bottom: 0.9rem;
+    text-align: center;
+    border-bottom: 1.5px solid var(--color-border); /* Borde más fino */
+    padding-bottom: 0.7rem;
+    font-weight: 700;
+}
+
+.course-card {
+    background-color: var(--color-course-bg);
+    border-radius: 8px; /* Bordes más redondeados */
+    padding: 0.9rem 1.1rem; /* Padding ajustado para cuadrados no tan grandes */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04); /* Sombra más sutil */
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    min-height: 55px; /* Altura mínima un poco menor */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem; /* Tamaño de letra más pequeño */
+    font-weight: 500;
+}
+
+.course-card:hover {
+    background-color: var(--color-course-hover-bg);
+    transform: translateY(-2px); /* Menos elevación al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Sombra un poco más pronunciada en hover */
+}
+
+/* Estado Aprobado */
+.course-card.approved {
+    background-color: var(--color-approved-bg);
+    color: var(--color-approved-text);
+    text-decoration: line-through;
+    text-decoration-color: var(--color-highlight-stroke);
+    text-decoration-thickness: 1.5px; /* Línea tachada más fina */
+    cursor: default;
+    box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.15); /* Sombra interna más suave */
+    font-weight: 600;
+}
+
+.course-card.approved:hover {
+    background-color: var(--color-approved-bg);
+    transform: none;
+    box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.15);
+}
+
+/* Estado Bloqueado */
+.course-card.blocked {
+    background-color: var(--color-blocked-bg);
+    color: var(--color-blocked-text);
+    cursor: not-allowed;
+    opacity: 0.65; /* Más sutil */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+}
+
+.course-card.blocked:hover {
+    background-color: var(--color-blocked-bg);
+    transform: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Modal de Mensajes */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--color-modal-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--color-modal-content-bg);
+    margin: auto;
+    padding: 25px; /* Un poco menos de padding */
+    border-radius: 12px; /* Más redondeado */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    width: 90%;
+    max-width: 450px; /* Ancho máximo un poco menor */
+    position: relative;
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-15px); } /* Animación más sutil */
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-button {
+    color: var(--color-text-secondary);
+    position: absolute;
+    top: 8px;
+    right: 18px;
+    font-size: 26px; /* Tamaño de 'x' ligeramente más pequeño */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--color-modal-button-hover);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-message {
+    color: var(--color-modal-text);
+    font-size: 1rem; /* Tamaño de letra más pequeño */
+    line-height: 1.7; /* Espaciado de línea ajustado */
+}
+
+/* Responsividad */
+@media (max-width: 1200px) {
+    .malla-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Más pequeño */
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 2rem;
+    }
+    .header-subtitle {
+        font-size: 0.95rem;
+    }
+    .main-content {
+        padding: 1.2rem 0.8rem;
+    }
+    .malla-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    .semester-column {
+        padding: 1.2rem;
+    }
+    .semester-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.7rem;
+    }
+    .course-card {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.88rem;
+        min-height: 50px;
+    }
+    .modal-content {
+        padding: 18px;
+    }
+    .close-button {
+        font-size: 22px;
+        right: 12px;
+    }
+    #modal-message {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 1.6rem;
+    }
+    .header-subtitle {
+        font-size: 0.85rem;
+    }
+    .main-content {
+        padding: 0.8rem;
+    }
+    .semester-title {
+        font-size: 1.3rem;
+    }
+    .course-card {
+        font-size: 0.8rem;
+        min-height: 45px;
+    }
+}
